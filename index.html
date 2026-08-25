@@ -173,6 +173,15 @@ a.service-card .service-more{display:inline-block}
   transform:rotate(45deg);
 }
 
+/* INTERNACIONAL */
+.intl{background:var(--black)}
+.intl-grid{display:flex;flex-wrap:wrap;gap:1px;background:rgba(255,255,255,.08);margin-top:50px}
+.intl-item{flex:1 1 220px;background:var(--black);padding:32px 30px;display:flex;align-items:center;gap:16px}
+.intl-item svg{width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:1.4;flex-shrink:0}
+.intl-item span{font-size:1.05rem;color:var(--white);font-weight:500}
+.intl-item.special{background:var(--charcoal)}
+.intl-item.special span{color:var(--gold);font-style:italic;font-weight:400;font-size:.95rem}
+
 /* VALORES */
 .values{background:var(--charcoal)}
 .values-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.08);margin-top:60px}
@@ -400,6 +409,34 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08);paddin
           <span class="service-more">Ver más →</span>
         </div>
       </a>
+    </div>
+  </div>
+</section>
+
+<section class="intl">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">Internacional</div>
+      <h2 class="section-title">Allí donde nos necesites</h2>
+      <p class="section-lead">Mapservice trabaja en España, Bélgica y Argentina, y allí donde vayan los artistas a los que damos servicio.</p>
+    </div>
+    <div class="intl-grid reveal">
+      <div class="intl-item">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>España</span>
+      </div>
+      <div class="intl-item">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Bélgica</span>
+      </div>
+      <div class="intl-item">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Argentina</span>
+      </div>
+      <div class="intl-item special">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+        <span>Y allí donde vayan los artistas</span>
+      </div>
     </div>
   </div>
 </section>
