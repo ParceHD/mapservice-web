@@ -175,12 +175,41 @@ a.service-card .service-more{display:inline-block}
 
 /* INTERNACIONAL */
 .intl{background:var(--black)}
-.intl-grid{display:flex;flex-wrap:wrap;gap:1px;background:rgba(255,255,255,.08);margin-top:50px}
-.intl-item{flex:1 1 220px;background:var(--black);padding:32px 30px;display:flex;align-items:center;gap:16px}
-.intl-item svg{width:26px;height:26px;stroke:var(--gold);fill:none;stroke-width:1.4;flex-shrink:0}
-.intl-item span{font-size:1.05rem;color:var(--white);font-weight:500}
-.intl-item.special{background:var(--charcoal)}
-.intl-item.special span{color:var(--gold);font-style:italic;font-weight:400;font-size:.95rem}
+.intl-map-wrap{
+  position:relative;margin-top:50px;background:var(--charcoal);
+  border:1px solid rgba(212,175,55,.18);padding:40px;
+}
+.intl-map-canvas{
+  position:relative;height:340px;
+  background-image:radial-gradient(rgba(255,255,255,.08) 1px, transparent 1px);
+  background-size:22px 22px;
+}
+.intl-map-canvas::before{
+  content:"";position:absolute;left:50%;top:50%;width:78%;aspect-ratio:1;
+  transform:translate(-50%,-50%);border:1px solid rgba(212,175,55,.12);border-radius:50%;
+  pointer-events:none;
+}
+.intl-map-canvas::after{
+  content:"";position:absolute;left:50%;top:50%;width:52%;aspect-ratio:1;
+  transform:translate(-50%,-50%);border:1px solid rgba(212,175,55,.1);border-radius:50%;
+  pointer-events:none;
+}
+.intl-map-canvas svg{position:absolute;inset:0;width:100%;height:100%}
+.intl-pin{position:absolute;display:flex;align-items:center;gap:10px;transform:translate(-50%,-50%);white-space:nowrap}
+.intl-pin .dot{position:relative;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px var(--gold),0 0 20px rgba(212,175,55,.6);flex-shrink:0}
+.intl-pin .dot::after{content:"";position:absolute;inset:-9px;border:1px solid var(--gold);border-radius:50%;animation:intl-pulse 2.4s ease-out infinite}
+@keyframes intl-pulse{0%{transform:scale(.35);opacity:.9}100%{transform:scale(2.4);opacity:0}}
+.intl-pin .label strong{display:block;font-size:.8rem;letter-spacing:.06em;color:var(--white);font-weight:600;text-transform:uppercase}
+.intl-pin .label span{font-size:.62rem;color:var(--muted);letter-spacing:.1em;text-transform:uppercase}
+.intl-caption{
+  margin-top:28px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);
+  color:var(--gold);font-size:.92rem;font-style:italic;
+}
+.intl-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.08);margin-top:1px}
+.intl-stat{background:var(--black);padding:26px 22px;display:flex;align-items:center;gap:14px}
+.intl-stat svg{width:24px;height:24px;stroke:var(--gold);fill:none;stroke-width:1.4;flex-shrink:0}
+.intl-stat strong{display:block;font-size:1.1rem;color:var(--white);font-weight:700;line-height:1.2}
+.intl-stat span{font-size:.72rem;color:var(--muted);letter-spacing:.03em}
 
 /* VALORES */
 .values{background:var(--charcoal)}
@@ -242,6 +271,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08);paddin
   .about-img img{height:420px}
   .services-grid{grid-template-columns:repeat(2,1fr)}
   .values-grid{grid-template-columns:repeat(2,1fr)}
+  .intl-stats{grid-template-columns:repeat(2,1fr)}
   .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,220px);height:auto}
   .gallery-grid .g1{grid-row:auto;grid-column:1 / 3}
 }
@@ -256,6 +286,9 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08);paddin
   .service-card{grid-template-columns:1fr}
   .service-media{height:200px}
   .values-grid{grid-template-columns:1fr}
+  .intl-map-wrap{padding:24px}
+  .intl-map-canvas{height:280px}
+  .intl-stats{grid-template-columns:1fr}
   .contact-card{padding:36px 26px}
 }
 
@@ -420,22 +453,44 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08);paddin
       <h2 class="section-title">Allí donde nos necesites</h2>
       <p class="section-lead">Mapservice trabaja en España, Bélgica y Argentina, y allí donde vayan los artistas a los que damos servicio.</p>
     </div>
-    <div class="intl-grid reveal">
-      <div class="intl-item">
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span>España</span>
+    <div class="intl-map-wrap reveal">
+      <div class="intl-map-canvas">
+        <svg viewBox="0 0 100 100" preserveAspectRatio="none">
+          <path d="M 34 20 Q 26 30 29 41" stroke="rgba(212,175,55,.4)" stroke-width=".3" fill="none"/>
+          <path d="M 29 41 Q 20 56 17 74" stroke="rgba(212,175,55,.4)" stroke-width=".3" fill="none"/>
+          <path d="M 34 20 Q 8 48 17 74" stroke="rgba(212,175,55,.22)" stroke-width=".3" fill="none" stroke-dasharray="1.2 1.4"/>
+        </svg>
+        <div class="intl-pin" style="left:34%;top:20%">
+          <span class="dot"></span>
+          <div class="label"><strong>Bélgica</strong><span>Europa</span></div>
+        </div>
+        <div class="intl-pin" style="left:29%;top:41%">
+          <span class="dot"></span>
+          <div class="label"><strong>España</strong><span>Europa</span></div>
+        </div>
+        <div class="intl-pin" style="left:17%;top:74%">
+          <span class="dot"></span>
+          <div class="label"><strong>Argentina</strong><span>América del Sur</span></div>
+        </div>
       </div>
-      <div class="intl-item">
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span>Bélgica</span>
+      <div class="intl-caption">+ allí donde vayan los artistas a los que damos servicio</div>
+    </div>
+    <div class="intl-stats reveal">
+      <div class="intl-stat">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20Z"/></svg>
+        <div><strong>3</strong><span>Países conectados</span></div>
       </div>
-      <div class="intl-item">
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span>Argentina</span>
+      <div class="intl-stat">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11Z"/></svg>
+        <div><strong>100%</strong><span>Compromiso y seguridad</span></div>
       </div>
-      <div class="intl-item special">
-        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
-        <span>Y allí donde vayan los artistas</span>
+      <div class="intl-stat">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <div><strong>24/7</strong><span>Servicio continuo</span></div>
+      </div>
+      <div class="intl-stat">
+        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>
+        <div><strong>100%</strong><span>Enfoque en el cliente</span></div>
       </div>
     </div>
   </div>
