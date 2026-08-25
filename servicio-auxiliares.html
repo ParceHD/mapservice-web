@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Servicio de Auxiliares — Mapservice</title>
+<meta name="description" content="Servicios auxiliares de Mapservice: qué son, funciones y dónde los ofrecemos, en Barcelona y toda España.">
+<link rel="icon" type="image/png" href="assets/mapservice-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0b0b0d;
+  --charcoal:#141416;
+  --slate:#2a2a2d;
+  --slate-2:#3a3a3e;
+  --offwhite:#e5e5e5;
+  --white:#ffffff;
+  --gold:#d4af37;
+  --muted:#9a9a9e;
+  --font:'Poppins',sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--black);
+  color:var(--offwhite);
+  font-family:var(--font);
+  font-weight:300;
+  line-height:1.7;
+  overflow-x:hidden;
+}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+.container{max-width:1000px;margin:0 auto;padding:0 32px}
+section{padding:90px 0}
+h1,h2,h3{font-family:var(--font);font-weight:700;color:var(--white)}
+.eyebrow{
+  display:flex;align-items:center;gap:14px;
+  font-size:.78rem;letter-spacing:.32em;text-transform:uppercase;
+  color:var(--gold);font-weight:600;margin-bottom:18px;
+}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold)}
+::selection{background:var(--gold);color:var(--black)}
+
+/* NAV (same as main site) */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:14px 0;background:rgba(11,11,13,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid rgba(212,175,55,.18);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{
+  position:relative;width:46px;height:46px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  background:var(--offwhite);border-radius:6px;padding:6px;
+}
+.logo-mark img{width:100%;height:100%;object-fit:contain}
+.logo-text{display:flex;flex-direction:column;line-height:1.15}
+.logo-text .name{font-weight:700;font-size:1.05rem;letter-spacing:.14em;color:var(--white)}
+.logo-text .tag{font-size:.56rem;letter-spacing:.2em;color:var(--gold);font-weight:600;margin-top:2px}
+.back-link{
+  display:inline-flex;align-items:center;gap:8px;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--offwhite);font-weight:500;transition:color .25s;
+}
+.back-link:hover{color:var(--gold)}
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:13px 28px;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;font-weight:600;
+  border:1px solid var(--gold);color:var(--black);background:var(--gold);
+  border-radius:2px;transition:all .3s ease;cursor:pointer;
+}
+.btn:hover{background:transparent;color:var(--gold)}
+
+/* PAGE HEADER */
+.page-hero{
+  position:relative;padding:170px 0 70px;
+}
+.page-hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(11,11,13,.6) 0%,rgba(11,11,13,.6) 30%,var(--black) 100%),
+    url('assets/mapservice-hotel.jpg') center 25%/cover no-repeat;
+  z-index:0;
+}
+.page-hero-inner{position:relative;z-index:1}
+.page-hero h1{font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:.01em;line-height:1.1}
+
+/* CONTENT */
+.service-detail{background:var(--black)}
+.intro-q{font-size:1.3rem;color:var(--white);font-weight:600;margin-bottom:16px}
+.intro-body{color:var(--muted);font-size:1.05rem;max-width:760px}
+
+.func-block{margin-top:70px}
+.func-title{font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:28px}
+.func-list{list-style:none;counter-reset:func;display:grid;grid-template-columns:1fr 1fr;gap:20px 40px}
+.func-list li{
+  counter-increment:func;display:flex;gap:16px;align-items:flex-start;
+  color:var(--offwhite);font-size:.98rem;font-weight:300;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.08);
+}
+.func-list li::before{
+  content:counter(func);flex-shrink:0;width:28px;height:28px;border:1px solid var(--gold);color:var(--gold);
+  display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;border-radius:50%;
+}
+
+.where-block{margin-top:70px}
+.where-title{font-size:.9rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:24px}
+.tag-list{display:flex;flex-wrap:wrap;gap:12px}
+.tag-list span{
+  padding:9px 18px;border:1px solid rgba(255,255,255,.18);color:var(--offwhite);
+  font-size:.86rem;border-radius:2px;
+}
+
+.cta-block{
+  margin-top:80px;padding:44px;background:var(--charcoal);border:1px solid rgba(212,175,55,.25);
+  display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
+}
+.cta-block h3{font-size:1.2rem;margin-bottom:6px}
+.cta-block p{color:var(--muted);font-size:.92rem}
+
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08);padding:44px 0}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.footer-brand{display:flex;align-items:center;gap:12px}
+.footer-brand .name{font-weight:700;letter-spacing:.12em;color:var(--white);font-size:.92rem}
+.footer-brand .tag{font-size:.66rem;color:var(--muted);letter-spacing:.08em}
+.tessen-credit{
+  display:inline-flex;align-items:center;gap:8px;
+  color:rgba(255,255,255,.5);font-size:.78rem;letter-spacing:.02em;
+  transition:color .3s;
+}
+.tessen-credit:hover{color:var(--gold)}
+.tessen-credit img{width:20px;height:20px;object-fit:contain}
+.footer-copy{color:var(--muted);font-size:.78rem}
+
+@media (max-width:700px){
+  .func-list{grid-template-columns:1fr}
+  section{padding:64px 0}
+  .container{padding:0 22px}
+  .page-hero{padding:140px 0 50px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav-inner">
+    <a class="logo" href="index.html">
+      <span class="logo-mark"><img src="assets/mapservice-logo.png" alt="Mapservice"></span>
+      <span class="logo-text">
+        <span class="name">MAPSERVICE</span>
+        <span class="tag">Calidad · Compromiso · Confianza</span>
+      </span>
+    </a>
+    <a class="back-link" href="index.html#servicios">← Volver a servicios</a>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="container page-hero-inner">
+    <div class="eyebrow">Nuestros servicios · 03</div>
+    <h1>Servicio de Auxiliares</h1>
+  </div>
+</section>
+
+<section class="service-detail">
+  <div class="container">
+    <div class="intro-q">¿Qué son los servicios auxiliares?</div>
+    <p class="intro-body">Son soluciones de apoyo pensadas para facilitar el funcionamiento diario de empresas, edificios, comunidades y todo tipo de instalaciones. Mapservice proporciona personal preparado para asumir aquellas tareas auxiliares que permiten mejorar la atención, organización y operativa del espacio.</p>
+
+    <div class="func-block">
+      <div class="func-title">Funciones</div>
+      <ul class="func-list">
+        <li>Recepción y atención de visitantes.</li>
+        <li>Información y orientación al público.</li>
+        <li>Conserjería y apoyo en instalaciones.</li>
+        <li>Gestión básica de correspondencia y paquetería.</li>
+        <li>Apertura y cierre de dependencias.</li>
+        <li>Gestión y custodia de llaves.</li>
+        <li>Supervisión básica de zonas comunes.</li>
+        <li>Comunicación y registro de incidencias.</li>
+        <li>Apoyo logístico y organizativo.</li>
+        <li>Servicios personalizados según las necesidades de cada cliente.</li>
+      </ul>
+    </div>
+
+    <div class="where-block">
+      <div class="where-title">¿Dónde ofrecemos este servicio?</div>
+      <div class="tag-list">
+        <span>Empresas</span>
+        <span>Hoteles</span>
+        <span>Oficinas</span>
+        <span>Comunidades</span>
+        <span>Centros empresariales</span>
+        <span>Instalaciones deportivas</span>
+        <span>Centros educativos</span>
+        <span>Comercios</span>
+        <span>Edificios privados</span>
+        <span>Espacios corporativos</span>
+      </div>
+    </div>
+
+    <div class="cta-block">
+      <div>
+        <h3>¿Necesitas este servicio?</h3>
+        <p>Escríbenos y te preparamos una propuesta a medida.</p>
+      </div>
+      <a class="btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=mapservicebcn@gmail.com&su=Solicitud%20de%20informaci%C3%B3n%20-%20Servicio%20de%20Auxiliares%20-%20Mapservice&body=Hola%2C%0A%0AMe%20gustar%C3%ADa%20solicitar%20informaci%C3%B3n%20sobre%20el%20Servicio%20de%20Auxiliares%20de%20Mapservice.%0A%0AEstoy%20interesado%2Fa%20en%20conocer%20disponibilidad%2C%20condiciones%20y%20presupuesto%20adaptado%20a%20mi%20empresa%20o%20instalaci%C3%B3n.%0A%0AQuedo%20a%20la%20espera%20de%20su%20respuesta.%0A%0AGracias." target="_blank" rel="noopener">Solicitar información</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <span class="logo-mark" style="width:42px;height:42px;padding:6px"><img src="assets/mapservice-logo.png" alt="Mapservice"></span>
+      <div>
+        <div class="name">MAPSERVICE</div>
+        <div class="tag">Calidad · Compromiso · Confianza</div>
+      </div>
+    </div>
+    <p class="footer-copy">© 2026 Mapservice · Control de Accesos y Servicios Auxiliares</p>
+    <a class="tessen-credit" href="https://www.tessenconsulting.com" target="_blank" rel="noopener">
+      <img src="assets/tessen-icon.png" alt="Tessen">
+      Hecho por Tessen
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>
