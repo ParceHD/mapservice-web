@@ -149,6 +149,29 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08);paddin
   .back-short{display:inline}
   .cta-block{padding:32px 24px}
 }
+
+/* COOKIES */
+.cookie-banner{
+  position:fixed;left:20px;right:20px;bottom:20px;z-index:250;max-width:640px;margin:0 auto;
+  background:var(--charcoal);border:1px solid rgba(212,175,55,.3);padding:24px 28px;
+  display:flex;align-items:center;gap:24px;flex-wrap:wrap;
+  transform:translateY(140%);opacity:0;transition:transform .4s ease,opacity .4s ease;
+  box-shadow:0 10px 40px rgba(0,0,0,.5);
+}
+.cookie-banner.show{transform:translateY(0);opacity:1}
+.cookie-banner p{color:var(--muted);font-size:.86rem;flex:1 1 260px;margin:0}
+.cookie-actions{display:flex;gap:10px;flex-wrap:wrap}
+.cookie-actions button{
+  font-family:var(--font);font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;font-weight:600;
+  padding:11px 20px;border-radius:2px;cursor:pointer;transition:all .3s ease;white-space:nowrap;
+}
+.cookie-btn-accept{background:var(--gold);border:1px solid var(--gold);color:var(--black)}
+.cookie-btn-accept:hover{background:transparent;color:var(--gold)}
+.cookie-btn-reject{background:transparent;border:1px solid rgba(255,255,255,.25);color:var(--offwhite)}
+.cookie-btn-reject:hover{border-color:var(--gold);color:var(--gold)}
+@media (max-width:600px){
+  .cookie-banner{left:12px;right:12px;bottom:12px;padding:20px}
+}
 </style>
 </head>
 <body>
@@ -244,6 +267,38 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08);paddin
     </a>
   </div>
 </footer>
+
+
+<div class="cookie-banner" id="cookieBanner">
+  <p>Usamos cookies propias y de terceros para mejorar tu experiencia de navegación. Puedes aceptarlas o rechazarlas.</p>
+  <div class="cookie-actions">
+    <button class="cookie-btn-reject" id="cookieReject" type="button">Rechazar</button>
+    <button class="cookie-btn-accept" id="cookieAccept" type="button">Aceptar</button>
+  </div>
+</div>
+
+<script>
+  const cookieBanner = document.getElementById('cookieBanner');
+  if (cookieBanner) {
+    try {
+      if (!localStorage.getItem('mapservice_cookie_consent')) {
+        setTimeout(() => cookieBanner.classList.add('show'), 600);
+      }
+    } catch (e) {}
+    const hideBanner = () => cookieBanner.classList.remove('show');
+    const saveConsent = (value) => {
+      try { localStorage.setItem('mapservice_cookie_consent', value); } catch (e) {}
+    };
+    document.getElementById('cookieAccept').addEventListener('click', () => {
+      saveConsent('accepted');
+      hideBanner();
+    });
+    document.getElementById('cookieReject').addEventListener('click', () => {
+      saveConsent('rejected');
+      hideBanner();
+    });
+  }
+</script>
 
 </body>
 </html>
