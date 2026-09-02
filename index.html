@@ -261,6 +261,7 @@ a.service-card .service-more{display:inline-block}
 .gallery-grid a:hover img{transform:scale(1.06)}
 .gallery-grid a::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(0,0,0,.55),transparent 55%)}
 .gallery-grid .g1{grid-row:1 / 3}
+.gallery-grid.quad{grid-template-columns:1fr 1fr}
 .gallery-cap{position:absolute;left:22px;bottom:18px;z-index:2;color:var(--white);font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
 .gallery-cap span{display:block;color:var(--gold);font-size:.66rem;letter-spacing:.14em;margin-top:4px}
 
@@ -351,6 +352,7 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08);paddin
   .intl-stats{grid-template-columns:repeat(2,1fr)}
   .gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,220px);height:auto}
   .gallery-grid .g1{grid-row:auto;grid-column:1 / 3}
+  .gallery-grid.quad{grid-template-rows:repeat(2,220px)}
 }
 @media (max-width:800px){
   nav.links,.nav-cta{display:none}
@@ -662,6 +664,33 @@ footer{background:var(--black);border-top:1px solid rgba(255,255,255,.08);paddin
       <a href="assets/mapservice-mantenimiento.jpg" target="_blank" rel="noopener">
         <img src="assets/mapservice-mantenimiento.jpg" alt="Mantenimiento y servicio técnico Mapservice">
         <span class="gallery-cap">Mantenimiento<span>Servicio técnico</span></span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow">En gira</div>
+      <h2 class="section-title">Seguridad allí donde estén los artistas</h2>
+    </div>
+    <div class="gallery-grid quad reveal">
+      <a href="assets/mapservice-gira-4.jpg" target="_blank" rel="noopener">
+        <img src="assets/mapservice-gira-4.jpg" alt="Escolta de seguridad Mapservice en concierto">
+        <span class="gallery-cap">Seguridad en escenario<span>Conciertos</span></span>
+      </a>
+      <a href="assets/mapservice-gira-3.jpg" target="_blank" rel="noopener">
+        <img src="assets/mapservice-gira-3.jpg" alt="Mapservice acompañando a un artista con sus fans">
+        <span class="gallery-cap">Meet &amp; greet<span>Gestión de fans</span></span>
+      </a>
+      <a href="assets/mapservice-gira-2.jpg" target="_blank" rel="noopener">
+        <img src="assets/mapservice-gira-2.jpg" alt="Mapservice en directo durante un concierto">
+        <span class="gallery-cap">Seguridad en directo<span>Giras</span></span>
+      </a>
+      <a href="assets/mapservice-gira-1.jpg" target="_blank" rel="noopener">
+        <img src="assets/mapservice-gira-1.jpg" alt="Mapservice en backstage de una producción">
+        <span class="gallery-cap">Backstage<span>Producción y prensa</span></span>
       </a>
     </div>
   </div>
